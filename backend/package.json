@@ -1,0 +1,32 @@
+{
+  "name": "gayaseva-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GayaSeva Central Backend & Render Keep-Alive Integration Subsystem",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/server.js",
+    "dev": "tsc && node dist/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "@types/pg": "^8.23.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.15",
+    "pg": "^8.23.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.17.0",
+    "@types/nodemailer": "^6.4.16",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}
