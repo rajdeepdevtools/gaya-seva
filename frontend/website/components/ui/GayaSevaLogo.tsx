@@ -7,6 +7,7 @@ interface GayaSevaLogoProps {
   showText?: boolean;
   textColor?: string;
   subtextColor?: string;
+  isDarkBg?: boolean;
 }
 
 export const GayaSevaLogo: React.FC<GayaSevaLogoProps> = ({
@@ -14,14 +15,15 @@ export const GayaSevaLogo: React.FC<GayaSevaLogoProps> = ({
   size = 48,
   variant = 'full',
   showText = false,
-  textColor = 'text-white',
-  subtextColor = 'text-[#F6C343]',
+  textColor,
+  subtextColor,
+  isDarkBg = false,
 }) => {
   const numericSize = typeof size === 'number' ? size : parseInt(size.toString(), 10) || 48;
 
   const logoImage = (
     <div 
-      className={`relative inline-block shrink-0 rounded-full overflow-hidden shadow-md group-hover:scale-105 transition-transform duration-300 border border-[#F58220]/30 ${className}`}
+      className={`relative inline-block shrink-0 rounded-full overflow-hidden shadow-md ring-2 ring-[#F58220]/50 ring-offset-1 group-hover:scale-105 transition-transform duration-300 ${className}`}
       style={{ width: numericSize, height: numericSize }}
     >
       <img
@@ -38,15 +40,23 @@ export const GayaSevaLogo: React.FC<GayaSevaLogoProps> = ({
     return logoImage;
   }
 
+  const primaryTextColor = textColor || (isDarkBg ? 'text-white' : 'text-[#2A180B]');
+  const tagColor = subtextColor || (isDarkBg ? 'text-[#F6C343]' : 'text-[#C45E00]');
+
   return (
-    <div className="flex items-center gap-3 group">
+    <div className="flex items-center gap-3 group select-none">
       {logoImage}
-      <div className="flex flex-col">
-        <span className={`font-serif text-xl sm:text-2xl font-bold tracking-tight ${textColor} group-hover:text-[#F6C343] transition-colors`}>
-          Gaya<span className="text-[#F58220]">Seva</span>
-        </span>
-        <span className={`text-[9px] sm:text-[10px] tracking-wider uppercase font-semibold ${subtextColor}`}>
-          Bodhgaya • Pind Daan • Pick & Drop
+      <div className="flex flex-col justify-center">
+        <div className="flex items-baseline">
+          <span className={`font-serif text-2xl sm:text-3xl font-extrabold tracking-tight ${primaryTextColor} drop-shadow-sm`}>
+            Gaya
+          </span>
+          <span className="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-[#D96B00] via-[#E07210] to-[#F58220] bg-clip-text text-transparent drop-shadow-sm ml-0.5">
+            Seva
+          </span>
+        </div>
+        <span className={`text-[9.5px] sm:text-[10.5px] tracking-[0.14em] uppercase font-black ${tagColor} leading-tight pt-0.5`}>
+          BODHGAYA • PIND DAAN • PICK & DROP
         </span>
       </div>
     </div>

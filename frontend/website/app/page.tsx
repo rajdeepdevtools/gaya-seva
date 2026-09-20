@@ -856,9 +856,143 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 21: 🌐 MULTILINGUAL YATRI SUPPORT MATRIX */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 text-center space-y-3">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Multilingual Yatri Support</span>
-        <p className="text-xs text-gray-600">Available in Hindi (हिंदी), English, Bengali (বাংলা), Telugu (తెలుగు), and Tamil (தமிழ்).</p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-[#4A2E1A] text-xs font-extrabold uppercase tracking-wider">
+            <Languages className="w-4 h-4 text-[#F58220]" />
+            <span>Multilingual Yatri Matrix</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-gray-900">
+            {isHindi ? '🌐 भारत के सभी राज्यों के लिए बहुभाषी सहायता' : '🌐 Multilingual Yatri Support Matrix'}
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            {isHindi
+              ? 'गया जी पिंडदान एवं तीर्थयात्रा हेतु हिंदी, बंगाली, अंग्रेजी, तेलुगु एवं तमिल भाषी पंडे, ड्राइवर एवं 24/7 हेल्पलाइन सहायता।'
+              : 'Dedicated pilgrimage assistance & verified local pandits available across 5 primary Indian languages for seamless Yatra.'}
+          </p>
+        </div>
+
+        {/* 5 Language Support Grid Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {[
+            {
+              code: 'HI',
+              name: 'हिंदी (Hindi)',
+              region: 'North & Central India',
+              greeting: '🙏 गया जी पिंडदान एवं पंडित सेवा',
+              desc: 'समस्त पिंडदान विधान, फल्गु स्नान एवं विष्णुपद दर्शन सहायता।',
+              badge: 'Primary Language',
+              badgeBg: 'bg-amber-100 text-amber-900',
+            },
+            {
+              code: 'BN',
+              name: 'বাংলা (Bengali)',
+              region: 'West Bengal & Tripura',
+              greeting: '🙏 গয়া ধাম পিন্ডদান ও তীর্থ সহায়তা',
+              desc: 'বাংলা ভাষী অভিজ্ঞ পুরোহিত ও স্থান পরিষেবা ব্যবস্থা।',
+              badge: 'Bengali Special',
+              badgeBg: 'bg-rose-100 text-rose-900',
+            },
+            {
+              code: 'EN',
+              name: 'English',
+              region: 'Pan-India & Global NRI',
+              greeting: '🙏 Official Gaya Pilgrim Portal',
+              desc: 'Comprehensive English guides, cab bookings & instant support.',
+              badge: 'Global & NRI',
+              badgeBg: 'bg-blue-100 text-blue-900',
+            },
+            {
+              code: 'TE',
+              name: 'తెలుగు (Telugu)',
+              region: 'Andhra & Telangana',
+              greeting: '🙏 గయా క్షేత్ర పిండ ప్రదాన సేవలు',
+              desc: 'తెలుగు మాట్లాడే తీర్థ పురోహితులు మరియు రవాణా సేవలు.',
+              badge: 'Telugu Yatri',
+              badgeBg: 'bg-emerald-100 text-emerald-900',
+            },
+            {
+              code: 'TA',
+              name: 'தமிழ் (Tamil)',
+              region: 'Tamil Nadu & South',
+              greeting: '🙏 கயா தீர்த்த யாத்திரை சேவைகள்',
+              desc: 'தமிழ் பேசும் புரோகிதர்கள் மற்றும் தங்கும் வசதிகள்.',
+              badge: 'Tamil Yatri',
+              badgeBg: 'bg-purple-100 text-purple-900',
+            },
+          ].map((langItem) => (
+            <div
+              key={langItem.code}
+              className="bg-white p-5 rounded-3xl border border-gray-200 shadow-sm hover:shadow-md hover:border-[#F58220]/40 transition-all flex flex-col justify-between space-y-3 group"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-[#F58220] group-hover:text-white font-black text-xs flex items-center justify-center text-gray-800 transition-colors">
+                    {langItem.code}
+                  </span>
+                  <span className={`text-[10px] font-extrabold px-2.5 py-0.5 rounded-full ${langItem.badgeBg}`}>
+                    {langItem.badge}
+                  </span>
+                </div>
+                <h3 className="font-serif font-bold text-base text-gray-900 group-hover:text-[#F58220] transition-colors">
+                  {langItem.name}
+                </h3>
+                <p className="text-[11px] font-bold text-gray-800">{langItem.greeting}</p>
+                <p className="text-[11px] text-gray-500 leading-normal">{langItem.desc}</p>
+              </div>
+
+              <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                <span className="text-gray-400 font-medium">{langItem.region}</span>
+                <span className="font-bold text-emerald-600 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Active
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Support Matrix Capability Badges */}
+        <div className="bg-[#2A180B] text-white p-6 sm:p-8 rounded-3xl border border-[#F58220]/30 shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-[#F58220]/20 rounded-2xl shrink-0">
+              <Languages className="w-6 h-6 text-[#F6C343]" />
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-sm">Native Speaking Purohits</h4>
+              <p className="text-[#F8F6EF]/70 text-[11px]">Pandits available for Hindi, Bengali, Telugu & Tamil rituals.</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-emerald-500/20 rounded-2xl shrink-0">
+              <PhoneCall className="w-6 h-6 text-emerald-400" />
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-sm">24/7 Multilingual Phone Line</h4>
+              <p className="text-[#F8F6EF]/70 text-[11px]">Helpline support in your native spoken language.</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-blue-500/20 rounded-2xl shrink-0">
+              <BookOpen className="w-6 h-6 text-blue-400" />
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-sm">Regional Pind Daan Guides</h4>
+              <p className="text-[#F8F6EF]/70 text-[11px]">Step-by-step rituals explained in 5 major languages.</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-purple-500/20 rounded-2xl shrink-0">
+              <ShieldCheck className="w-6 h-6 text-purple-400" />
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-sm">Verified Local Assistance</h4>
+              <p className="text-[#F8F6EF]/70 text-[11px]">Language-matched drivers & hotel concierge staff.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* SECTION 22: 📱 MOBILE WEB APP (PWA) & QR DOWNLOAD BANNER */}

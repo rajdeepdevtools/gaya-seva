@@ -48,20 +48,8 @@ export interface ServiceConfigItem {
   whatsapp?: string;
 }
 
-// Initial Default Data
-const INITIAL_POPUP_ADS: PopupAd[] = [
-  {
-    id: 'pop-1',
-    title: '🙏 Pitru Paksha 2026 Special Pinda Daan Package',
-    subtitle: 'Book verified Gaya Ji Teerth Pandits & VIP Vishnupad Darshan Assistance. Exclusive discount for early yatri bookings.',
-    imageUrl: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=800&q=80',
-    actionUrl: '/pandit',
-    phone: '+919876543200',
-    whatsapp: '919876543200',
-    isActive: true,
-    delaySeconds: 1,
-  },
-];
+// Initial Default Data (Popup Ads default empty until added by Admin)
+const INITIAL_POPUP_ADS: PopupAd[] = [];
 
 const INITIAL_SLIDER_BANNERS: SliderBanner[] = [
   {
@@ -249,7 +237,13 @@ export class ContentStore {
         localStorage.setItem(KEYS.POPUP_ADS, JSON.stringify(INITIAL_POPUP_ADS));
         return INITIAL_POPUP_ADS;
       }
-      return JSON.parse(stored);
+      const parsed: PopupAd[] = JSON.parse(stored);
+      // Filter out legacy dummy popups
+      const cleaned = parsed.filter(ad => ad.id !== 'pop-1');
+      if (cleaned.length !== parsed.length) {
+        this.savePopupAds(cleaned);
+      }
+      return cleaned;
     } catch {
       return INITIAL_POPUP_ADS;
     }

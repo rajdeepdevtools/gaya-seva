@@ -21,8 +21,8 @@ export function LanguageSelector({ variant = 'navbar' }: { variant?: 'topbar' | 
   }, []);
 
   const languages: { code: Language; label: string; flag: string }[] = [
-    { code: 'hi', label: 'हिंदी (Hindi)', flag: '🇮🇳' },
     { code: 'en', label: 'English (Eng)', flag: '🇬🇧' },
+    { code: 'hi', label: 'हिंदी (Hindi)', flag: '🇮🇳' },
   ];
 
   const current = languages.find((l) => l.code === language) || languages[0];

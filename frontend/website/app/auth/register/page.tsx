@@ -86,20 +86,20 @@ export default function RegisterPage() {
                   : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
               }`}
             >
-              <span>🙏 Teerth Yatri</span>
-              <span className="text-[10px] opacity-75 font-normal">Pilgrim / Traveler</span>
+              <span>🙏 User / Yatri</span>
+              <span className="text-[10px] opacity-75 font-normal">Pilgrim / Devotee</span>
             </button>
             <button
               type="button"
               onClick={() => setRole('PANDIT')}
               className={`p-3 rounded-2xl border text-center font-bold transition-all text-xs flex flex-col items-center gap-1 ${
-                role === 'PANDIT'
+                role !== 'PILGRIM'
                   ? 'bg-[#2A180B] text-[#F6C343] border-[#2A180B] shadow-sm'
                   : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
               }`}
             >
-              <span>🪔 Teerth Pandit</span>
-              <span className="text-[10px] opacity-75 font-normal">Pind Daan Priest</span>
+              <span>💼 Vendor / Partner</span>
+              <span className="text-[10px] opacity-75 font-normal">Pandit / Driver / Hotel</span>
             </button>
           </div>
         </div>

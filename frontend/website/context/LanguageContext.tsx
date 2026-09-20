@@ -13,12 +13,14 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('hi');
+  const [language, setLanguageState] = useState<Language>('en');
 
   useEffect(() => {
     const savedLang = localStorage.getItem('gayaseva_lang') as Language;
     if (savedLang && (savedLang === 'hi' || savedLang === 'en')) {
       setLanguageState(savedLang);
+    } else {
+      setLanguageState('en');
     }
   }, []);
 
@@ -33,7 +35,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const t = (key: keyof Translations): string => {
-    return translations[language][key] || translations['hi'][key] || key;
+    return translations[language][key] || translations['en'][key] || key;
   };
 
   return (
