@@ -123,11 +123,11 @@ export const LocationProvider: React.FC<{ children: ReactNode }> = ({ children }
     );
   };
 
-  // Auto request location permission on initial mount
+  // Auto request location permission on initial mount to fetch real active GPS location
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Check saved state
+    // Check saved state first for instant UI response
     const saved = localStorage.getItem('gayaseva_user_location');
     if (saved) {
       try {
@@ -136,15 +136,15 @@ export const LocationProvider: React.FC<{ children: ReactNode }> = ({ children }
           setUserLocation(parsed.coords);
           setLocationStatus('granted');
           setHasUserSetLocation(true);
-          setLocationName('Your Saved GPS Location');
+          setLocationName('Your Live GPS Location');
         }
       } catch {
         // ignore
       }
     }
 
-    // Automatically prompt for geolocation if not denied or granted already
-    if (navigator.geolocation && !saved) {
+    // Always attempt live browser geolocation request by default
+    if (navigator.geolocation) {
       requestLocation();
     }
   }, []);
@@ -173,16 +173,16 @@ export const LocationProvider: React.FC<{ children: ReactNode }> = ({ children }
   const sortByDistance = <T extends { lat?: number | string; lng?: number | string }>(items: T[]) => {
     return items
       .map((item) => {
-        const latVal = item.lat || DEFAULT_GAYA_COORDS.lat;
-        const lngVal = item.lng || DEFAULT_GAYA_COORDS.lng;
+        const latVal = item.lat != null ? item.lat : DEFAULT_GAYA_COORDS.lat;
+        const lngVal = item.lng != null ? item.lng : DEFAULT_GAYA_COORDS.lng;
         const dist = getDistance(latVal, lngVal);
         return {
           ...item,
-          distanceKm: dist.kilometers,
+          distanceKm: Number(dist.kilometers.toFixed(2)),
           distanceFormatted: dist.formatted,
         };
       })
-      .sort((a, b) => a.distanceKm - b.distanceKm);
+      .sort((a, b) => a.distanceKm - b.distanceKm); // Closest proximity first!
   };
 
   return (

@@ -3,13 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { UserCheck, ShieldCheck, ArrowRight, User, Phone, Mail, MapPin, Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { UserCheck, ShieldCheck, ArrowRight, User, Phone, Mail, MapPin, Eye, EyeOff, AlertCircle, CheckCircle2, HeartHandshake } from 'lucide-react';
 import { GayaSevaLogo } from '@/components/ui/GayaSevaLogo';
-import { UserStore, UserAccount } from '@/lib/userStore';
+import { UserStore } from '@/lib/userStore';
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [role, setRole] = useState<'PILGRIM' | 'PANDIT' | 'DRIVER' | 'HOTEL'>('PILGRIM');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -46,8 +45,8 @@ export default function RegisterPage() {
       name,
       email: email || `${phone.replace(/\s+/g, '')}@gayaseva.org`,
       phone,
-      role,
-      status: role === 'PILGRIM' ? 'VERIFIED' : 'PENDING',
+      role: 'PILGRIM',
+      status: 'VERIFIED',
       city: city || 'Gaya Ji',
     });
 
@@ -67,47 +66,16 @@ export default function RegisterPage() {
           <div className="flex justify-center mb-1">
             <GayaSevaLogo size={72} showText={false} className="drop-shadow-md" />
           </div>
-          <h1 className="text-2xl font-serif font-bold text-[#4A2E1A]">Join GayaSeva</h1>
+          <h1 className="text-2xl font-serif font-bold text-[#4A2E1A]">Create User / Yatri Account</h1>
           <p className="text-xs text-gray-500">
-            Create an account for Gaya Ji Teerth Yatra or Service Partner listing.
+            Register as a User / Yatri pilgrim to book Pind Daan pujas, Pick & Drop cabs, and Dharamshala stays in Gaya Ji.
           </p>
-        </div>
-
-        {/* Account Role Selection */}
-        <div className="space-y-2 text-xs">
-          <label className="font-bold text-[#4A2E1A] block">खाता प्रकार / Account Type</label>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => setRole('PILGRIM')}
-              className={`p-3 rounded-2xl border text-center font-bold transition-all text-xs flex flex-col items-center gap-1 ${
-                role === 'PILGRIM'
-                  ? 'bg-[#2A180B] text-[#F6C343] border-[#2A180B] shadow-sm'
-                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
-              }`}
-            >
-              <span>🙏 User / Yatri</span>
-              <span className="text-[10px] opacity-75 font-normal">Pilgrim / Devotee</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setRole('PANDIT')}
-              className={`p-3 rounded-2xl border text-center font-bold transition-all text-xs flex flex-col items-center gap-1 ${
-                role !== 'PILGRIM'
-                  ? 'bg-[#2A180B] text-[#F6C343] border-[#2A180B] shadow-sm'
-                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
-              }`}
-            >
-              <span>💼 Vendor / Partner</span>
-              <span className="text-[10px] opacity-75 font-normal">Pandit / Driver / Hotel</span>
-            </button>
-          </div>
         </div>
 
         {/* Error Alert */}
         {error && (
           <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
             <span>{error}</span>
           </div>
         )}
@@ -116,7 +84,7 @@ export default function RegisterPage() {
         {success && (
           <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>खाता सफलता पूर्वक बनाया गया! Redirecting to homepage...</span>
+            <span>यूजर / यात्री खाता सफलता पूर्वक बनाया गया! Redirecting to home...</span>
           </div>
         )}
 
@@ -132,7 +100,7 @@ export default function RegisterPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Sunita Banerjee"
-                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
             </div>
           </div>
@@ -147,7 +115,7 @@ export default function RegisterPage() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
-                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
             </div>
           </div>
@@ -161,21 +129,21 @@ export default function RegisterPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="yatri@example.com"
-                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
             </div>
           </div>
 
           <div>
-            <label className="font-bold text-gray-700 block mb-1">City / Home Location</label>
+            <label className="font-bold text-gray-700 block mb-1">Home City / Location</label>
             <div className="relative">
               <MapPin className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
               <input
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="e.g. Kolkata / Gaya Ji"
-                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                placeholder="e.g. Kolkata / Patna / Varanasi"
+                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
             </div>
           </div>
@@ -190,7 +158,7 @@ export default function RegisterPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-9 pr-10 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                className="w-full pl-9 pr-10 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
               <button
                 type="button"
@@ -204,21 +172,30 @@ export default function RegisterPage() {
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#F58220] hover:bg-[#E07210] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95"
+            className="w-full py-3.5 bg-gradient-to-r from-[#F58220] to-[#E07210] hover:from-[#E07210] hover:to-[#C86000] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
           >
-            <span>Complete Registration</span>
+            <span>Create User / Yatri Account</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
-        <div className="text-center border-t border-gray-100 pt-4 text-xs text-gray-600">
-          Already have an account?{' '}
-          <Link href="/auth/login" className="font-bold text-[#F58220] hover:underline">
-            Login
-          </Link>
+        <div className="text-center border-t border-gray-100 pt-4 text-xs text-gray-600 space-y-2">
+          <p>
+            Already have a User / Yatri account?{' '}
+            <Link href="/auth/login" className="font-bold text-[#F58220] hover:underline">
+              Log In
+            </Link>
+          </p>
+          <p>
+            Service Provider (Pandit, Driver, Hotel)?{' '}
+            <Link href="/provider/register" className="font-bold text-emerald-600 hover:underline">
+              Register as Service Partner →
+            </Link>
+          </p>
         </div>
 
       </div>
     </div>
   );
 }
+

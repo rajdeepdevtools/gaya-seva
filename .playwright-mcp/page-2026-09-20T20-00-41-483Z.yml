@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - link "GayaSeva Primary Admin Logo GayaSeva ADMIN PORTAL" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "GayaSeva Primary Admin Logo" [ref=e6]
+        - generic [ref=e7]:
+          - generic [ref=e8]: GayaSeva
+          - generic [ref=e9]: ADMIN PORTAL
+      - generic [ref=e10]:
+        - paragraph [ref=e11]: Super Admin User
+        - paragraph [ref=e12]: superadmin@gayaseva.org
+      - navigation [ref=e13]:
+        - link "Dashboard" [ref=e14] [cursor=pointer]:
+          - /url: /
+        - link "📢 Popup Advertisements" [ref=e21] [cursor=pointer]:
+          - /url: /popup-ads
+        - link "🖼️ Slider Banners" [ref=e25] [cursor=pointer]:
+          - /url: /slider-banners
+        - link "📍 Sacred Places & Markets" [ref=e31] [cursor=pointer]:
+          - /url: /places
+        - link "🛠️ Service Catalog & Fares" [ref=e36] [cursor=pointer]:
+          - /url: /services-config
+        - link "🔍 Provider Verification" [ref=e39] [cursor=pointer]:
+          - /url: /verification
+        - link "📊 Analytics & Conversion" [ref=e44] [cursor=pointer]:
+          - /url: /analytics
+        - link "Users & Admins" [ref=e48] [cursor=pointer]:
+          - /url: /users
+        - link "Drivers" [ref=e55] [cursor=pointer]:
+          - /url: /drivers
+        - link "Pandits" [ref=e61] [cursor=pointer]:
+          - /url: /pandits
+        - link "Hotels" [ref=e65] [cursor=pointer]:
+          - /url: /hotels
+        - link "Email & SMTP" [ref=e70] [cursor=pointer]:
+          - /url: /email-templates
+        - link "QR Campaign Analytics" [ref=e75] [cursor=pointer]:
+          - /url: /qr-sources
+        - link "100k System Health" [ref=e79] [cursor=pointer]:
+          - /url: /system-health
+        - link "Audit Logs" [ref=e84] [cursor=pointer]:
+          - /url: /audit-logs
+  - main [ref=e88]:
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - heading "🚕 Drivers & Taxi Fleet Management" [level=1] [ref=e97]
+          - paragraph [ref=e98]: Manage registered taxi, auto, and airport pickup drivers in Gaya Ji & Bodhgaya.
+        - generic [ref=e99]:
+          - button "Sync" [ref=e100] [cursor=pointer]
+          - button "Register New Driver" [ref=e107] [cursor=pointer]
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]: Total Registered Drivers
+          - paragraph [ref=e115]: "0"
+        - generic [ref=e116]:
+          - generic [ref=e117]: Verified Cab Partners
+          - paragraph [ref=e118]: "0"
+        - generic [ref=e119]:
+          - generic [ref=e120]: Pending Approval
+          - paragraph [ref=e121]: "0"
+        - generic [ref=e122]:
+          - generic [ref=e123]: Average Fleet Rating
+          - paragraph [ref=e124]: "4.9"
+      - generic [ref=e127]:
+        - textbox "Search driver name, phone, vehicle type, station..." [ref=e132]
+        - generic [ref=e133]:
+          - generic [ref=e136]: "Verification Status:"
+          - combobox [ref=e137]:
+            - option "All Status" [selected]
+            - option "Verified Drivers Only"
+            - option "Pending Verification"
+            - option "Suspended"
+      - table [ref=e140]:
+        - rowgroup [ref=e141]:
+          - row [ref=e142]:
+            - columnheader "Driver Profile" [ref=e143]
+            - columnheader "Vehicle Category" [ref=e144]
+            - columnheader "Contact & Station" [ref=e145]
+            - columnheader "KYC / Govt ID" [ref=e146]
+            - columnheader "Status & Verification" [ref=e147]
+            - columnheader "Actions" [ref=e148]
+        - rowgroup [ref=e149]:
+          - row [ref=e150]:
+            - cell "No matching driver accounts found." [ref=e151]

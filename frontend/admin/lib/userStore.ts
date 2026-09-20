@@ -4,15 +4,22 @@ export interface UserAccount {
   email: string;
   phone: string;
   role: 'PILGRIM' | 'PANDIT' | 'DRIVER' | 'HOTEL' | 'ADMIN' | 'SUPER_ADMIN';
+  customRole?: string;
   status: 'VERIFIED' | 'PENDING' | 'SUSPENDED';
   city?: string;
   languages?: string[];
   createdAt: string;
   avatarUrl?: string;
+  profilePicUrl?: string;
+  documentUrl?: string;
+  googleMapsUrl?: string;
+  lat?: number;
+  lng?: number;
   rating?: number;
 }
 
 const STORAGE_KEY = 'GAYASEVA_USERS_STORE';
+const API_URL = 'http://localhost:3000/api/users';
 
 const DEFAULT_USERS: UserAccount[] = [
   {
@@ -32,6 +39,7 @@ const DEFAULT_USERS: UserAccount[] = [
     email: 'rajesh.shastri@gayaseva.org',
     phone: '+919876543210',
     role: 'PANDIT',
+    customRole: 'Pinda Daan & Tripindi Shraddha Specialist',
     status: 'VERIFIED',
     city: 'Vishnupad Zone',
     languages: ['Hindi', 'Sanskrit', 'Bengali'],
@@ -44,6 +52,7 @@ const DEFAULT_USERS: UserAccount[] = [
     email: 'ramesh.cab@gayaseva.org',
     phone: '+919876543220',
     role: 'DRIVER',
+    customRole: 'Ac Dzire / Etios Taxi',
     status: 'VERIFIED',
     city: 'Gaya Junction',
     createdAt: '2026-02-15T00:00:00.000Z',
@@ -55,6 +64,7 @@ const DEFAULT_USERS: UserAccount[] = [
     email: 'dharamshala@gayaseva.org',
     phone: '+919876543230',
     role: 'HOTEL',
+    customRole: 'AC Yatri Dharamshala & Guest House',
     status: 'VERIFIED',
     city: 'Vishnupad Temple Area',
     createdAt: '2026-03-01T00:00:00.000Z',
@@ -79,12 +89,33 @@ export const UserStore = {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!stored) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_USERS));
+        this.fetchUsersFromApi();
         return DEFAULT_USERS;
       }
+      // Trigger background sync with API
+      this.fetchUsersFromApi();
       return JSON.parse(stored);
     } catch (e) {
       return DEFAULT_USERS;
     }
+  },
+
+  async fetchUsersFromApi(): Promise<UserAccount[]> {
+    if (typeof window === 'undefined') return DEFAULT_USERS;
+    try {
+      const res = await fetch(API_URL, { cache: 'no-store' });
+      if (res.ok) {
+        const users = await res.json();
+        if (Array.isArray(users)) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+          window.dispatchEvent(new Event('storage'));
+          return users;
+        }
+      }
+    } catch (e) {
+      // Fallback silently if API server is not running
+    }
+    return this.getUsers();
   },
 
   saveUsers(users: UserAccount[]) {
@@ -106,6 +137,16 @@ export const UserStore = {
     };
     const updated = [newUser, ...users];
     this.saveUsers(updated);
+
+    // Sync with Centralized API Server asynchronously
+    if (typeof window !== 'undefined') {
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser),
+      }).catch(console.error);
+    }
+
     return newUser;
   },
 
@@ -121,6 +162,15 @@ export const UserStore = {
     });
     if (updatedUser) {
       this.saveUsers(updated);
+
+      // Sync update with API Server
+      if (typeof window !== 'undefined') {
+        fetch(API_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, ...updates }),
+        }).catch(console.error);
+      }
     }
     return updatedUser;
   },
@@ -130,6 +180,13 @@ export const UserStore = {
     const filtered = users.filter((u) => u.id !== id);
     if (filtered.length !== users.length) {
       this.saveUsers(filtered);
+
+      // Sync deletion with API Server
+      if (typeof window !== 'undefined') {
+        fetch(`${API_URL}?id=${id}`, {
+          method: 'DELETE',
+        }).catch(console.error);
+      }
       return true;
     }
     return false;

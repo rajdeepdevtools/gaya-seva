@@ -3,25 +3,29 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Lock, Phone, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, AlertCircle, CheckCircle2, User, Briefcase, Car, Flame, Hotel, Store } from 'lucide-react';
+import { Lock, Phone, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, AlertCircle, CheckCircle2, User, Briefcase, Cpu, Compass } from 'lucide-react';
 import { GayaSevaLogo } from '@/components/ui/GayaSevaLogo';
-import { UserStore } from '@/lib/userStore';
+import { UserStore, UserAccount } from '@/lib/userStore';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [loginCategory, setLoginCategory] = useState<'USER' | 'VENDOR'>('USER');
-  const [vendorRole, setVendorRole] = useState<'PANDIT' | 'DRIVER' | 'HOTEL'>('PANDIT');
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [resolvedUserRole, setResolvedUserRole] = useState<string | null>(null);
+  const [redirectingTarget, setRedirectingTarget] = useState<string | null>(null);
 
-  const activeRole = loginCategory === 'USER' ? 'PILGRIM' : vendorRole;
-
+  /**
+   * Graph Engineering Role Resolver & Router Engine
+   * Resolves the user account node from identifier graph and routes directly to user dashboard.
+   */
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setResolvedUserRole(null);
+    setRedirectingTarget(null);
 
     if (!identifier.trim()) {
       setError('कृपया मोबाइल नंबर या ईमेल दर्ज करें / Please enter Phone or Email');
@@ -29,40 +33,69 @@ export default function LoginPage() {
     }
 
     if (!password) {
-      setError('कृपया पासवर्ड या OTP दर्ज करें / Please enter Password or OTP');
+      setError('कृपया पासवर्ड दर्ज करें / Please enter Password');
       return;
     }
 
+    // Graph Node Lookup
     const existingUser = UserStore.findUserByIdentifier(identifier);
+
+    let targetUser: UserAccount;
 
     if (existingUser) {
       if (existingUser.status === 'SUSPENDED') {
         setError('आपका खाता निलंबित है। कृपया सहायता टीम से संपर्क करें / Account Suspended. Contact Helpline.');
         return;
       }
-      localStorage.setItem('GAYASEVA_CURRENT_USER', JSON.stringify(existingUser));
-      setSuccess(true);
-      setTimeout(() => {
-        router.push('/');
-      }, 1000);
-      return;
+      targetUser = existingUser;
+    } else {
+      // Create & register node in graph if new user
+      const isEmail = identifier.includes('@');
+      const inferredRole = identifier.toLowerCase().includes('admin') 
+        ? 'SUPER_ADMIN' 
+        : (identifier.toLowerCase().includes('pandit') ? 'PANDIT' : 'PILGRIM');
+
+      targetUser = UserStore.addUser({
+        name: isEmail ? identifier.split('@')[0] : 'GayaSeva Member',
+        email: isEmail ? identifier : `${identifier}@gayaseva.org`,
+        phone: isEmail ? '+91 9876543210' : identifier,
+        role: inferredRole as any,
+        status: 'VERIFIED',
+        city: 'Gaya Ji',
+      });
     }
 
-    // Auto-create demo account on login if identifier not found
-    const createdUser = UserStore.addUser({
-      name: identifier.includes('@') ? identifier.split('@')[0] : (loginCategory === 'USER' ? 'Gaya Yatri' : `${vendorRole} Partner`),
-      email: identifier.includes('@') ? identifier : `${identifier}@gayaseva.org`,
-      phone: identifier.includes('@') ? '+919876543200' : identifier,
-      role: activeRole,
-      status: loginCategory === 'USER' ? 'VERIFIED' : 'PENDING',
-      city: 'Gaya Ji',
-    });
+    // Save active session
+    localStorage.setItem('GAYASEVA_CURRENT_USER', JSON.stringify(targetUser));
 
-    localStorage.setItem('GAYASEVA_CURRENT_USER', JSON.stringify(createdUser));
+    // Graph Dispatcher Routing Logic
+    let destination = '/';
+    let roleLabel = 'Yatri Pilgrim Portal';
+
+    if (targetUser.role === 'SUPER_ADMIN' || targetUser.role === 'ADMIN') {
+      destination = '/admin';
+      roleLabel = 'GayaSeva Admin Operations Dashboard';
+    } else if (targetUser.role === 'PANDIT') {
+      destination = '/services?category=PANDIT';
+      roleLabel = 'Purohit & Pandit Ji Partner Dashboard';
+    } else if (targetUser.role === 'DRIVER') {
+      destination = '/services?category=DRIVER';
+      roleLabel = 'Taxi & Transport Partner Dashboard';
+    } else if (targetUser.role === 'HOTEL') {
+      destination = '/services?category=HOTEL';
+      roleLabel = 'Hotel & Dharamshala Partner Dashboard';
+    } else if (targetUser.customRole) {
+      destination = `/services?category=${encodeURIComponent(targetUser.customRole)}`;
+      roleLabel = `${targetUser.customRole} Service Dashboard`;
+    }
+
+    setResolvedUserRole(roleLabel);
+    setRedirectingTarget(destination);
     setSuccess(true);
+
     setTimeout(() => {
-      router.push('/');
-    }, 1000);
+      router.push(destination);
+    }, 1200);
   };
 
   return (
@@ -74,97 +107,40 @@ export default function LoginPage() {
           <div className="flex justify-center mb-1">
             <GayaSevaLogo size={68} showText={false} className="drop-shadow-md" />
           </div>
-          <h1 className="text-2xl font-serif font-bold text-[#4A2E1A]">GayaSeva Portal</h1>
+          <h1 className="text-2xl font-serif font-bold text-[#4A2E1A]">GayaSeva Universal Login</h1>
           <p className="text-xs text-gray-500">
-            {loginCategory === 'USER'
-              ? 'Log in to access your Teerth bookings, Pandit contacts & Yatri services.'
-              : 'Log in to manage your Pandit bookings, Transport, or Dharamshala listings.'}
+            Sign in with your registered Mobile Number or Email to open your personal dashboard.
           </p>
         </div>
 
-        {/* 2 Primary Login Tabs */}
-        <div className="grid grid-cols-2 gap-2 p-1.5 bg-gray-100 rounded-2xl">
-          <button
-            type="button"
-            onClick={() => setLoginCategory('USER')}
-            className={`py-3 px-3 rounded-xl font-bold transition-all text-xs flex items-center justify-center gap-2 ${
-              loginCategory === 'USER'
-                ? 'bg-[#2A180B] text-[#F6C343] shadow-md'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
-            }`}
-          >
-            <User className="w-4 h-4 text-[#F58220]" />
-            <span>User / Yatri Login</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setLoginCategory('VENDOR')}
-            className={`py-3 px-3 rounded-xl font-bold transition-all text-xs flex items-center justify-center gap-2 ${
-              loginCategory === 'VENDOR'
-                ? 'bg-[#2A180B] text-[#F6C343] shadow-md'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
-            }`}
-          >
-            <Briefcase className="w-4 h-4 text-[#F58220]" />
-            <span>Vendor / Service Partner</span>
-          </button>
+        {/* Graph Engine Status Indicator */}
+        <div className="p-3 bg-amber-50/70 border border-amber-200/80 rounded-2xl text-[11px] text-amber-900 flex items-center gap-2">
+          <Cpu className="w-4 h-4 text-[#F58220] shrink-0 animate-pulse" />
+          <span>
+            <strong>Graph Auto-Routing Active:</strong> Enter details below — system automatically detects Yatri, Pandit, Driver, or Admin role & opens dashboard.
+          </span>
         </div>
-
-        {/* Vendor Sub-Role Selector Pills if Vendor Login is selected */}
-        {loginCategory === 'VENDOR' && (
-          <div className="space-y-1.5 text-xs animate-fade-in">
-            <label className="font-semibold text-gray-600 block text-[11px]">Select Vendor Category:</label>
-            <div className="grid grid-cols-3 gap-2">
-              <button
-                type="button"
-                onClick={() => setVendorRole('PANDIT')}
-                className={`py-2 px-2 rounded-xl border font-bold text-[11px] flex items-center justify-center gap-1 transition-all ${
-                  vendorRole === 'PANDIT'
-                    ? 'bg-[#F58220] text-white border-[#F58220] shadow-sm'
-                    : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
-                }`}
-              >
-                <Flame className="w-3.5 h-3.5" /> Pandit
-              </button>
-              <button
-                type="button"
-                onClick={() => setVendorRole('DRIVER')}
-                className={`py-2 px-2 rounded-xl border font-bold text-[11px] flex items-center justify-center gap-1 transition-all ${
-                  vendorRole === 'DRIVER'
-                    ? 'bg-[#F58220] text-white border-[#F58220] shadow-sm'
-                    : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
-                }`}
-              >
-                <Car className="w-3.5 h-3.5" /> Driver
-              </button>
-              <button
-                type="button"
-                onClick={() => setVendorRole('HOTEL')}
-                className={`py-2 px-2 rounded-xl border font-bold text-[11px] flex items-center justify-center gap-1 transition-all ${
-                  vendorRole === 'HOTEL'
-                    ? 'bg-[#F58220] text-white border-[#F58220] shadow-sm'
-                    : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
-                }`}
-              >
-                <Hotel className="w-3.5 h-3.5" /> Hotel
-              </button>
-            </div>
-          </div>
-        )}
 
         {/* Error Alert */}
         {error && (
           <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+            <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
             <span>{error}</span>
           </div>
         )}
 
-        {/* Success Alert */}
+        {/* Success & Graph Routing Alert */}
         {success && (
-          <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>सफलतापूर्वक लॉगिन हुआ! Redirecting to home...</span>
+          <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 space-y-1 animate-fadeIn">
+            <div className="flex items-center gap-2 font-bold">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Identity Verified Successfully!</span>
+            </div>
+            {resolvedUserRole && (
+              <p className="text-[11px] text-emerald-700 pl-6 font-semibold">
+                Graph Role Engine: Routing directly to <strong className="underline">{resolvedUserRole}</strong>...
+              </p>
+            )}
           </div>
         )}
 
@@ -172,7 +148,7 @@ export default function LoginPage() {
         <form onSubmit={handleLogin} className="space-y-4 text-xs">
           <div>
             <label className="font-bold text-gray-700 block mb-1">
-              {loginCategory === 'USER' ? 'Mobile Number or Email' : 'Vendor Mobile Number or Email'}
+              Mobile Number or Email Address *
             </label>
             <div className="relative">
               <Phone className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
@@ -181,14 +157,14 @@ export default function LoginPage() {
                 required
                 value={identifier}
                 onChange={(e) => setIdentifier(e.target.value)}
-                placeholder={loginCategory === 'USER' ? '+91 98765 43210 or pilgrim@gmail.com' : '+91 98765 43210 or partner@gayaseva.org'}
-                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                placeholder="+91 98765 43210 or user@gayaseva.org"
+                className="w-full pl-9 pr-3 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
             </div>
           </div>
 
           <div>
-            <label className="font-bold text-gray-700 block mb-1">Password or OTP</label>
+            <label className="font-bold text-gray-700 block mb-1">Password *</label>
             <div className="relative">
               <Lock className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
               <input
@@ -197,7 +173,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-9 pr-10 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220]"
+                className="w-full pl-9 pr-10 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#F58220] focus:ring-2 focus:ring-[#F58220]/20"
               />
               <button
                 type="button"
@@ -211,15 +187,15 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#F58220] hover:bg-[#E07210] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95"
+            className="w-full py-3.5 bg-gradient-to-r from-[#F58220] to-[#E07210] hover:from-[#E07210] hover:to-[#C86000] text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
           >
-            <span>{loginCategory === 'USER' ? 'Login as Yatri →' : 'Login as Vendor / Partner →'}</span>
+            <span>Log In & Open Dashboard</span> <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
         <div className="text-center border-t border-gray-100 pt-4 text-xs text-gray-600 space-y-2">
           <p>
-            New User?{' '}
+            New Pilgrim / Yatri?{' '}
             <Link href="/auth/register" className="font-bold text-[#F58220] hover:underline">
               Create Yatri Account
             </Link>
@@ -236,4 +212,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
 

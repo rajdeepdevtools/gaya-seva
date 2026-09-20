@@ -1,4 +1,4 @@
-export type Language = 'hi' | 'en';
+export type Language = 'en' | 'hi' | 'bn' | 'te' | 'ta';
 
 export interface Translations {
   // Top bar & Navbar
@@ -120,9 +120,8 @@ export interface Translations {
   langEnglish: string;
 }
 
-export const translations: Record<Language, Translations> = {
-  hi: {
-    topBarWelcome: '🙏 Gaya Ji में आपका स्वागत है — पिंडदान, पिक एंड ड्रॉप, स्टे, इमरजेंसी एवं गया गाइड नेटवर्क',
+const hiTranslations: Translations = {
+  topBarWelcome: '🙏 Gaya Ji में आपका स्वागत है — पिंडदान, पिक एंड ड्रॉप, स्टे, इमरजेंसी एवं गया गाइड नेटवर्क',
     brandSubtag: 'यात्रा • सेवा • अनुभव',
     navHome: 'मुख्य पृष्ठ',
     navServices: 'सेवाएं',
@@ -230,8 +229,9 @@ export const translations: Record<Language, Translations> = {
 
     langHindi: 'हिंदी',
     langEnglish: 'English',
-  },
-  en: {
+  };
+
+const enTranslations: Translations = {
     topBarWelcome: '🙏 Welcome to Gaya Ji — Pinddaan, Pick & Drop, Stay, Emergency & Gaya Guide Network',
     brandSubtag: 'Travel • Connect • Experience',
     navHome: 'Home',
@@ -340,5 +340,42 @@ export const translations: Record<Language, Translations> = {
 
     langHindi: 'हिंदी',
     langEnglish: 'English',
+  };
+
+export const translations: Record<Language, Translations> = {
+  hi: hiTranslations,
+  en: enTranslations,
+  bn: {
+    ...enTranslations,
+    topBarWelcome: '🙏 গয়া ধামে আপনাকে স্বাগতম — পিন্ডদান, ক্যাব, হোটেল ও গয়া গাইড নেটওয়ার্ক',
+    navHome: 'হোম',
+    navServices: 'পরিষেবা',
+    navGayaGuide: 'গয়া গাইড',
+    navAiAssistant: 'এআই সহকারী',
+    navHelp: 'সাহায্য',
+    navLogin: 'লগইন',
+    navRegister: 'রেজিস্টার',
+  },
+  te: {
+    ...enTranslations,
+    topBarWelcome: '🙏 గయా క్షేత్రానికి స్వాగతం — పిండ ప్రదానం, క్యాబ్ మరియు హోటల్ సేవలు',
+    navHome: 'హోమ్',
+    navServices: 'సేవలు',
+    navGayaGuide: 'గయా గైడ్',
+    navAiAssistant: 'ఏఐ సహాయకుడు',
+    navHelp: 'సహాయం',
+    navLogin: 'లాగిన్',
+    navRegister: 'రిజిస్టర్',
+  },
+  ta: {
+    ...enTranslations,
+    topBarWelcome: '🙏 கயா தீர்த்தத்திற்கு நல்வரவு — பின்ற தானம், டாக்ஸி மற்றும் தங்கும் வசதிகள்',
+    navHome: 'முகப்பு',
+    navServices: 'சேவைகள்',
+    navGayaGuide: 'கயா வழிகாட்டி',
+    navAiAssistant: 'ஏஐ உதவியாளர்',
+    navHelp: 'உதவி',
+    navLogin: 'உள்நுழைవు',
+    navRegister: 'பதிவு',
   },
 };

@@ -6,11 +6,11 @@
   body {
     background-color: #F8F6EF;
     color: #1A0C03;
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), serif;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   }
 }
 

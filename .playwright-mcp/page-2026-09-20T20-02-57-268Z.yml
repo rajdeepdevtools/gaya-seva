@@ -1,0 +1,97 @@
+- generic [active] [ref=f3e1]:
+  - complementary [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "GayaSeva Primary Admin Logo GayaSeva ADMIN PORTAL" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+        - img "GayaSeva Primary Admin Logo" [ref=f3e6]
+        - generic [ref=f3e7]:
+          - generic [ref=f3e8]: GayaSeva
+          - generic [ref=f3e9]: ADMIN PORTAL
+      - generic [ref=f3e10]:
+        - paragraph [ref=f3e11]: Super Admin User
+        - paragraph [ref=f3e12]: superadmin@gayaseva.org
+      - navigation [ref=f3e13]:
+        - link "Dashboard" [ref=f3e14] [cursor=pointer]:
+          - /url: /
+        - link "📢 Popup Advertisements" [ref=f3e21] [cursor=pointer]:
+          - /url: /popup-ads
+        - link "🖼️ Slider Banners" [ref=f3e25] [cursor=pointer]:
+          - /url: /slider-banners
+        - link "📍 Sacred Places & Markets" [ref=f3e31] [cursor=pointer]:
+          - /url: /places
+        - link "🛠️ Service Catalog & Fares" [ref=f3e36] [cursor=pointer]:
+          - /url: /services-config
+        - link "🔍 Provider Verification" [ref=f3e39] [cursor=pointer]:
+          - /url: /verification
+        - link "📊 Analytics & Conversion" [ref=f3e44] [cursor=pointer]:
+          - /url: /analytics
+        - link "Users & Admins" [ref=f3e48] [cursor=pointer]:
+          - /url: /users
+        - link "Drivers" [ref=f3e55] [cursor=pointer]:
+          - /url: /drivers
+        - link "Pandits" [ref=f3e61] [cursor=pointer]:
+          - /url: /pandits
+        - link "Hotels" [ref=f3e65] [cursor=pointer]:
+          - /url: /hotels
+        - link "Email & SMTP" [ref=f3e70] [cursor=pointer]:
+          - /url: /email-templates
+        - link "QR Campaign Analytics" [ref=f3e75] [cursor=pointer]:
+          - /url: /qr-sources
+        - link "100k System Health" [ref=f3e79] [cursor=pointer]:
+          - /url: /system-health
+        - link "Audit Logs" [ref=f3e84] [cursor=pointer]:
+          - /url: /audit-logs
+  - main [ref=f3e88]:
+    - generic [ref=f3e89]:
+      - generic [ref=f3e90]:
+        - generic [ref=f3e91]:
+          - text: USER ACCOUNTS & ADMIN RBAC PORTAL
+          - heading "Users & System Administrators" [level=1] [ref=f3e92]
+          - paragraph [ref=f3e93]: Manage Yatri pilgrim accounts, section admins, and super administrator privileges.
+        - generic [ref=f3e94]:
+          - button "Sync" [ref=f3e95] [cursor=pointer]
+          - button "Add User or Admin" [ref=f3e102] [cursor=pointer]
+      - generic [ref=f3e107]:
+        - generic [ref=f3e108]:
+          - generic [ref=f3e109]: Total User Accounts
+          - paragraph [ref=f3e110]: "0"
+        - generic [ref=f3e111]:
+          - generic [ref=f3e112]: Super Administrators
+          - paragraph [ref=f3e113]: "0"
+        - generic [ref=f3e114]:
+          - generic [ref=f3e115]: Section Admins
+          - paragraph [ref=f3e116]: "0"
+        - generic [ref=f3e117]:
+          - generic [ref=f3e118]: Yatri Pilgrims
+          - paragraph [ref=f3e119]: "0"
+      - generic [ref=f3e120]:
+        - textbox "Search by name, email, phone, city..." [ref=f3e125]
+        - generic [ref=f3e126]:
+          - generic [ref=f3e127]:
+            - generic [ref=f3e130]: "Role:"
+            - combobox [ref=f3e131]:
+              - option "All Roles" [selected]
+              - option "Yatri (Pilgrim)"
+              - option "Section Admin"
+              - option "Super Admin"
+              - option "Teerth Pandit"
+              - option "Taxi Driver"
+              - option "Hotel Owner"
+          - generic [ref=f3e132]:
+            - generic [ref=f3e133]: "Status:"
+            - combobox [ref=f3e134]:
+              - option "All Status" [selected]
+              - option "Verified"
+              - option "Pending"
+              - option "Suspended"
+      - table [ref=f3e137]:
+        - rowgroup [ref=f3e138]:
+          - row [ref=f3e139]:
+            - columnheader "User Account Profile" [ref=f3e140]
+            - columnheader "Role & Privilege" [ref=f3e141]
+            - columnheader "Contact & Location" [ref=f3e142]
+            - columnheader "Status" [ref=f3e143]
+            - columnheader "Actions" [ref=f3e144]
+        - rowgroup [ref=f3e145]:
+          - row [ref=f3e146]:
+            - cell "No matching user accounts found." [ref=f3e147]

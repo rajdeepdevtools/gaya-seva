@@ -1,0 +1,58 @@
+- generic [active] [ref=f2e1]:
+  - complementary [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "GayaSeva Primary Admin Logo GayaSeva ADMIN PORTAL" [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - img "GayaSeva Primary Admin Logo" [ref=f2e6]
+        - generic [ref=f2e7]:
+          - generic [ref=f2e8]: GayaSeva
+          - generic [ref=f2e9]: ADMIN PORTAL
+      - generic [ref=f2e10]:
+        - paragraph [ref=f2e11]: Super Admin User
+        - paragraph [ref=f2e12]: superadmin@gayaseva.org
+      - navigation [ref=f2e13]:
+        - link "Dashboard" [ref=f2e14] [cursor=pointer]:
+          - /url: /
+        - link "📢 Popup Advertisements" [ref=f2e21] [cursor=pointer]:
+          - /url: /popup-ads
+        - link "🖼️ Slider Banners" [ref=f2e25] [cursor=pointer]:
+          - /url: /slider-banners
+        - link "📍 Sacred Places & Markets" [ref=f2e31] [cursor=pointer]:
+          - /url: /places
+        - link "🛠️ Service Catalog & Fares" [ref=f2e36] [cursor=pointer]:
+          - /url: /services-config
+        - link "🔍 Provider Verification" [ref=f2e39] [cursor=pointer]:
+          - /url: /verification
+        - link "📊 Analytics & Conversion" [ref=f2e44] [cursor=pointer]:
+          - /url: /analytics
+        - link "Users & Admins" [ref=f2e48] [cursor=pointer]:
+          - /url: /users
+        - link "Drivers" [ref=f2e55] [cursor=pointer]:
+          - /url: /drivers
+        - link "Pandits" [ref=f2e61] [cursor=pointer]:
+          - /url: /pandits
+        - link "Hotels" [ref=f2e65] [cursor=pointer]:
+          - /url: /hotels
+        - link "Email & SMTP" [ref=f2e70] [cursor=pointer]:
+          - /url: /email-templates
+        - link "QR Campaign Analytics" [ref=f2e75] [cursor=pointer]:
+          - /url: /qr-sources
+        - link "100k System Health" [ref=f2e79] [cursor=pointer]:
+          - /url: /system-health
+        - link "Audit Logs" [ref=f2e84] [cursor=pointer]:
+          - /url: /audit-logs
+  - main [ref=f2e88]:
+    - generic [ref=f2e89]:
+      - generic [ref=f2e90]:
+        - generic [ref=f2e91]:
+          - heading "Provider Verification Portal" [level=1] [ref=f2e92]
+          - paragraph [ref=f2e96]: Review partner applications, verify submitted Aadhaar/PAN IDs, and approve verified tick badges.
+        - generic [ref=f2e97]: 0 Pending Applications
+      - generic [ref=f2e102]:
+        - button "All Partners (0)" [ref=f2e103] [cursor=pointer]
+        - button "⏳ Pending Review (0)" [ref=f2e104] [cursor=pointer]
+        - button "🟢 Verified (0)" [ref=f2e105] [cursor=pointer]
+        - button "🔴 Rejected / Suspended (0)" [ref=f2e106] [cursor=pointer]
+      - generic [ref=f2e107]:
+        - heading "No Providers Found" [level=3] [ref=f2e110]
+        - paragraph [ref=f2e111]: No partner accounts currently match this filter criteria.

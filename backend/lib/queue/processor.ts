@@ -140,6 +140,18 @@ export class TaskQueueProcessor {
   public getDeadLetterQueue(): JobData[] {
     return [...this.deadLetterQueue];
   }
+
+  public clear(): void {
+    this.queue = [];
+    this.deadLetterQueue = [];
+    this.processedKeys.clear();
+    this.metrics = {
+      totalEnqueued: 0,
+      totalProcessed: 0,
+      totalFailed: 0,
+      totalRetries: 0,
+    };
+  }
 }
 
 export const taskQueue = TaskQueueProcessor.getInstance();

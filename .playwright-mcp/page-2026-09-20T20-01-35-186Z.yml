@@ -1,0 +1,86 @@
+- generic [active] [ref=f1e1]:
+  - complementary [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "GayaSeva Primary Admin Logo GayaSeva ADMIN PORTAL" [ref=f1e4] [cursor=pointer]:
+        - /url: /
+        - img "GayaSeva Primary Admin Logo" [ref=f1e6]
+        - generic [ref=f1e7]:
+          - generic [ref=f1e8]: GayaSeva
+          - generic [ref=f1e9]: ADMIN PORTAL
+      - generic [ref=f1e10]:
+        - paragraph [ref=f1e11]: Super Admin User
+        - paragraph [ref=f1e12]: superadmin@gayaseva.org
+      - navigation [ref=f1e13]:
+        - link "Dashboard" [ref=f1e14] [cursor=pointer]:
+          - /url: /
+        - link "📢 Popup Advertisements" [ref=f1e21] [cursor=pointer]:
+          - /url: /popup-ads
+        - link "🖼️ Slider Banners" [ref=f1e25] [cursor=pointer]:
+          - /url: /slider-banners
+        - link "📍 Sacred Places & Markets" [ref=f1e31] [cursor=pointer]:
+          - /url: /places
+        - link "🛠️ Service Catalog & Fares" [ref=f1e36] [cursor=pointer]:
+          - /url: /services-config
+        - link "🔍 Provider Verification" [ref=f1e39] [cursor=pointer]:
+          - /url: /verification
+        - link "📊 Analytics & Conversion" [ref=f1e44] [cursor=pointer]:
+          - /url: /analytics
+        - link "Users & Admins" [ref=f1e48] [cursor=pointer]:
+          - /url: /users
+        - link "Drivers" [ref=f1e55] [cursor=pointer]:
+          - /url: /drivers
+        - link "Pandits" [ref=f1e61] [cursor=pointer]:
+          - /url: /pandits
+        - link "Hotels" [ref=f1e65] [cursor=pointer]:
+          - /url: /hotels
+        - link "Email & SMTP" [ref=f1e70] [cursor=pointer]:
+          - /url: /email-templates
+        - link "QR Campaign Analytics" [ref=f1e75] [cursor=pointer]:
+          - /url: /qr-sources
+        - link "100k System Health" [ref=f1e79] [cursor=pointer]:
+          - /url: /system-health
+        - link "Audit Logs" [ref=f1e84] [cursor=pointer]:
+          - /url: /audit-logs
+  - main [ref=f1e88]:
+    - generic [ref=f1e89]:
+      - generic [ref=f1e90]:
+        - generic [ref=f1e91]:
+          - heading "🪔 Teerth Pandits & Purohit Directory" [level=1] [ref=f1e95]
+          - paragraph [ref=f1e96]: Manage verified Pandits for Pinda Daan, Shraddha Karma, and Vishnupad Pujas in Gaya Ji.
+        - generic [ref=f1e97]:
+          - button "Sync" [ref=f1e98] [cursor=pointer]
+          - button "Register New Pandit" [ref=f1e105] [cursor=pointer]
+      - generic [ref=f1e110]:
+        - generic [ref=f1e111]:
+          - generic [ref=f1e112]: Total Teerth Pandits
+          - paragraph [ref=f1e113]: "0"
+        - generic [ref=f1e114]:
+          - generic [ref=f1e115]: Verified Pandits (Green Tick)
+          - paragraph [ref=f1e116]: "0"
+        - generic [ref=f1e117]:
+          - generic [ref=f1e118]: Pending Approval
+          - paragraph [ref=f1e119]: "0"
+        - generic [ref=f1e120]:
+          - generic [ref=f1e121]: Average Yatri Rating
+          - paragraph [ref=f1e122]: "4.9"
+      - generic [ref=f1e125]:
+        - textbox "Search pandit name, phone, puja specialty, ghat..." [ref=f1e130]
+        - generic [ref=f1e131]:
+          - generic [ref=f1e134]: "Verification Status:"
+          - combobox [ref=f1e135]:
+            - option "All Status" [selected]
+            - option "Verified Pandits Only"
+            - option "Pending Verification"
+            - option "Suspended"
+      - table [ref=f1e138]:
+        - rowgroup [ref=f1e139]:
+          - row [ref=f1e140]:
+            - columnheader "Pandit / Purohit Profile" [ref=f1e141]
+            - columnheader "Specialty & Languages" [ref=f1e142]
+            - columnheader "Contact & Temple Zone" [ref=f1e143]
+            - columnheader "Credentials & ID" [ref=f1e144]
+            - columnheader "Status & Verified Tick" [ref=f1e145]
+            - columnheader "Actions" [ref=f1e146]
+        - rowgroup [ref=f1e147]:
+          - row [ref=f1e148]:
+            - cell "No matching Pandit accounts found." [ref=f1e149]

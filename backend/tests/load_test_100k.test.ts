@@ -16,6 +16,7 @@ import { realtimeGPSTracker } from '../lib/realtime/tracker';
 describe('GayaSeva 100,000 Concurrent User Scalability Suite', () => {
   beforeEach(() => {
     cacheManager.clear();
+    taskQueue.clear();
   });
 
   it('1. Public Page Caching: Handles 100,000 concurrent cache lookups with > 99% hit rate and < 5ms P95 latency', async () => {
@@ -60,7 +61,7 @@ describe('GayaSeva 100,000 Concurrent User Scalability Suite', () => {
       dropAddress: 'Vishnupad Temple',
       pickupLat: 24.7954,
       pickupLng: 85.0002,
-      idempotencyKey: 'key_pick_drop_100k',
+      idempotencyKey: `key_pick_drop_100k_${Date.now()}`,
     });
 
     expect(response.status).toBe('QUEUED');

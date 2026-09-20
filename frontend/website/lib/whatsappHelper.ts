@@ -3,12 +3,14 @@
  * Formats polite, well-structured, professional WhatsApp messages for pilgrims.
  */
 
+import { Language } from './translations';
+
 export interface WhatsAppMessageOptions {
   phone: string;
   title: string;
   subtitle?: string;
   sourceType?: 'POPUP_AD' | 'SLIDER_BANNER' | 'PANDIT' | 'TAXI' | 'HOTEL' | 'GENERAL';
-  lang?: 'hi' | 'en';
+  lang?: Language;
 }
 
 /**

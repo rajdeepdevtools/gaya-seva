@@ -17,7 +17,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const savedLang = localStorage.getItem('gayaseva_lang') as Language;
-    if (savedLang && (savedLang === 'hi' || savedLang === 'en')) {
+    if (savedLang && ['en', 'hi', 'bn', 'te', 'ta'].includes(savedLang)) {
       setLanguageState(savedLang);
     } else {
       setLanguageState('en');

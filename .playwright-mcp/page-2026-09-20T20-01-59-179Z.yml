@@ -1,0 +1,86 @@
+- generic [active] [ref=f2e1]:
+  - complementary [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "GayaSeva Primary Admin Logo GayaSeva ADMIN PORTAL" [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - img "GayaSeva Primary Admin Logo" [ref=f2e6]
+        - generic [ref=f2e7]:
+          - generic [ref=f2e8]: GayaSeva
+          - generic [ref=f2e9]: ADMIN PORTAL
+      - generic [ref=f2e10]:
+        - paragraph [ref=f2e11]: Super Admin User
+        - paragraph [ref=f2e12]: superadmin@gayaseva.org
+      - navigation [ref=f2e13]:
+        - link "Dashboard" [ref=f2e14] [cursor=pointer]:
+          - /url: /
+        - link "📢 Popup Advertisements" [ref=f2e21] [cursor=pointer]:
+          - /url: /popup-ads
+        - link "🖼️ Slider Banners" [ref=f2e25] [cursor=pointer]:
+          - /url: /slider-banners
+        - link "📍 Sacred Places & Markets" [ref=f2e31] [cursor=pointer]:
+          - /url: /places
+        - link "🛠️ Service Catalog & Fares" [ref=f2e36] [cursor=pointer]:
+          - /url: /services-config
+        - link "🔍 Provider Verification" [ref=f2e39] [cursor=pointer]:
+          - /url: /verification
+        - link "📊 Analytics & Conversion" [ref=f2e44] [cursor=pointer]:
+          - /url: /analytics
+        - link "Users & Admins" [ref=f2e48] [cursor=pointer]:
+          - /url: /users
+        - link "Drivers" [ref=f2e55] [cursor=pointer]:
+          - /url: /drivers
+        - link "Pandits" [ref=f2e61] [cursor=pointer]:
+          - /url: /pandits
+        - link "Hotels" [ref=f2e65] [cursor=pointer]:
+          - /url: /hotels
+        - link "Email & SMTP" [ref=f2e70] [cursor=pointer]:
+          - /url: /email-templates
+        - link "QR Campaign Analytics" [ref=f2e75] [cursor=pointer]:
+          - /url: /qr-sources
+        - link "100k System Health" [ref=f2e79] [cursor=pointer]:
+          - /url: /system-health
+        - link "Audit Logs" [ref=f2e84] [cursor=pointer]:
+          - /url: /audit-logs
+  - main [ref=f2e88]:
+    - generic [ref=f2e89]:
+      - generic [ref=f2e90]:
+        - generic [ref=f2e91]:
+          - heading "🏨 Hotels & Dharamshala Stay Management" [level=1] [ref=f2e96]
+          - paragraph [ref=f2e97]: Manage verified hotels, guest houses, and Yatri Dharamshalas in Gaya Ji.
+        - generic [ref=f2e98]:
+          - button "Sync" [ref=f2e99] [cursor=pointer]
+          - button "Register New Hotel" [ref=f2e106] [cursor=pointer]
+      - generic [ref=f2e111]:
+        - generic [ref=f2e112]:
+          - generic [ref=f2e113]: Total Stay Properties
+          - paragraph [ref=f2e114]: "0"
+        - generic [ref=f2e115]:
+          - generic [ref=f2e116]: Verified Stays (Green Tick)
+          - paragraph [ref=f2e117]: "0"
+        - generic [ref=f2e118]:
+          - generic [ref=f2e119]: Pending Approval
+          - paragraph [ref=f2e120]: "0"
+        - generic [ref=f2e121]:
+          - generic [ref=f2e122]: Average Yatri Rating
+          - paragraph [ref=f2e123]: "4.9"
+      - generic [ref=f2e126]:
+        - textbox "Search hotel name, phone, property type, area..." [ref=f2e131]
+        - generic [ref=f2e132]:
+          - generic [ref=f2e135]: "Verification Status:"
+          - combobox [ref=f2e136]:
+            - option "All Status" [selected]
+            - option "Verified Hotels Only"
+            - option "Pending Verification"
+            - option "Suspended"
+      - table [ref=f2e139]:
+        - rowgroup [ref=f2e140]:
+          - row [ref=f2e141]:
+            - columnheader "Property / Dharamshala Name" [ref=f2e142]
+            - columnheader "Stay Category" [ref=f2e143]
+            - columnheader "Contact & Location" [ref=f2e144]
+            - columnheader "License / Trade ID" [ref=f2e145]
+            - columnheader "Status & Verified Tick" [ref=f2e146]
+            - columnheader "Actions" [ref=f2e147]
+        - rowgroup [ref=f2e148]:
+          - row [ref=f2e149]:
+            - cell "No matching Hotel / Dharamshala accounts found." [ref=f2e150]

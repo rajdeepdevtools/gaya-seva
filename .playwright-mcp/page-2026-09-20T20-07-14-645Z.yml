@@ -1,0 +1,255 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e3]:
+    - generic [ref=f4e10]:
+      - generic [ref=f4e11]: 📍 Live Proximity & Nearby Services
+      - generic [ref=f4e12]: • Gaya Ji Teerth (Vishnupad)
+    - generic [ref=f4e13]:
+      - button "🎯 Enable Live Location" [ref=f4e14] [cursor=pointer]
+      - button "Dismiss" [ref=f4e18] [cursor=pointer]
+  - banner [ref=f4e22]:
+    - generic [ref=f4e23]:
+      - generic [ref=f4e24]:
+        - generic [ref=f4e25]: 🙏 Welcome to Gaya Ji — Pinddaan, Pick & Drop, Stay, Emergency & Gaya Guide Network
+        - generic [ref=f4e30]: "|"
+        - button "Gaya Ji Teerth (Vishnupad)" [ref=f4e31] [cursor=pointer]
+      - button "Select Language" [ref=f4e38] [cursor=pointer]:
+        - generic [ref=f4e42]: 🇬🇧
+        - generic [ref=f4e43]: English
+    - navigation [ref=f4e46]:
+      - generic [ref=f4e47]:
+        - link "GayaSeva Primary Logo Gaya Seva BODHGAYA • PIND DAAN • PICK & DROP" [ref=f4e48] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f4e49]:
+            - img "GayaSeva Primary Logo" [ref=f4e51]
+            - generic [ref=f4e52]:
+              - generic [ref=f4e53]:
+                - generic [ref=f4e54]: Gaya
+                - generic [ref=f4e55]: Seva
+              - generic [ref=f4e56]: BODHGAYA • PIND DAAN • PICK & DROP
+        - generic [ref=f4e57]:
+          - link "Home" [ref=f4e58] [cursor=pointer]:
+            - /url: /
+          - link "🧰 Services" [ref=f4e60] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=f4e61]: 🧰
+            - generic [ref=f4e62]: Services
+          - link "Famous Places" [ref=f4e63] [cursor=pointer]:
+            - /url: /gaya-guide
+          - link "Trip Plan" [ref=f4e68] [cursor=pointer]:
+            - /url: /my-trip
+          - link "Arrangeman (More Services)" [ref=f4e75] [cursor=pointer]:
+            - /url: https://arrangeman.com
+          - link "AI Assistant" [ref=f4e84] [cursor=pointer]:
+            - /url: /ai
+        - generic [ref=f4e88]:
+          - link "Login" [ref=f4e89] [cursor=pointer]:
+            - /url: /auth/login
+          - link "Get Started" [ref=f4e90] [cursor=pointer]:
+            - /url: /auth/register
+  - main [ref=f4e91]:
+    - generic [ref=f4e93]:
+      - generic [ref=f4e94]:
+        - img "GayaSeva Primary Logo" [ref=f4e97]
+        - heading "Register as Service Partner" [level=1] [ref=f4e98]
+        - paragraph [ref=f4e99]:
+          - text: Connect directly with thousands of Yatri pilgrims visiting Gaya Ji daily.
+          - strong [ref=f4e100]: 0% Commission, 100% Direct Bookings.
+      - generic [ref=f4e101]:
+        - generic [ref=f4e102]:
+          - generic [ref=f4e103]: Select Your Service Category *
+          - generic [ref=f4e104]:
+            - button "Popular Purohit & Pandit Ji" [ref=f4e105] [cursor=pointer]:
+              - generic [ref=f4e106]: Popular
+              - generic [ref=f4e110]: Purohit & Pandit Ji
+            - button "Instant Taxi & Transport Driver" [ref=f4e112] [cursor=pointer]:
+              - generic [ref=f4e113]: Instant
+              - generic [ref=f4e119]: Taxi & Transport Driver
+            - button "Direct Hotel & Dharamshala" [ref=f4e121] [cursor=pointer]:
+              - generic [ref=f4e122]: Direct
+              - generic [ref=f4e127]: Hotel & Dharamshala
+            - button "Top Goods Puja Samagri & Tilkut" [ref=f4e129] [cursor=pointer]:
+              - generic [ref=f4e130]: Top Goods
+              - generic [ref=f4e135]: Puja Samagri & Tilkut
+            - button "Verified Tirth Panda & Guide" [ref=f4e137] [cursor=pointer]:
+              - generic [ref=f4e138]: Verified
+              - generic [ref=f4e143]: Tirth Panda & Guide
+            - button "Pure Veg Satvik Food & Catering" [ref=f4e145] [cursor=pointer]:
+              - generic [ref=f4e146]: Pure Veg
+              - generic [ref=f4e153]: Satvik Food & Catering
+            - button "Custom Other Custom Service" [ref=f4e155] [cursor=pointer]:
+              - generic [ref=f4e156]: Custom
+              - generic [ref=f4e160]: Other Custom Service
+        - generic [ref=f4e162]:
+          - generic [ref=f4e163]:
+            - generic [ref=f4e164]:
+              - generic [ref=f4e169]: Profile Picture / Photo
+              - generic [ref=f4e170]: "* REQUIRED"
+            - generic [ref=f4e171]:
+              - button "Upload (50KB)" [ref=f4e172] [cursor=pointer]
+              - button "Image URL" [ref=f4e173] [cursor=pointer]
+          - generic [ref=f4e181]:
+            - button "Choose File" [ref=f4e182] [cursor=pointer]
+            - paragraph [ref=f4e183]: "Formats: .jpeg, .jpg, .png, .webp (Strictly ≤ 50 KB)"
+        - generic [ref=f4e184]:
+          - generic [ref=f4e185]:
+            - generic [ref=f4e186]: Full Name (as per Govt ID) *
+            - textbox "e.g. Pandit Rakesh Shastri" [ref=f4e192]
+          - generic [ref=f4e193]:
+            - generic [ref=f4e194]:
+              - generic [ref=f4e195]: Mobile / WhatsApp Number *
+              - textbox "+91 98765 43210" [ref=f4e199]
+            - generic [ref=f4e200]:
+              - generic [ref=f4e201]: Business / Firm Title (Optional)
+              - textbox "e.g. Shree Vishnupad Travels" [ref=f4e207]
+          - generic [ref=f4e208]:
+            - generic [ref=f4e209]:
+              - generic [ref=f4e210]: Operating Location in Gaya *
+              - textbox "e.g. Near Vishnupad Temple Gate" [ref=f4e215]
+            - generic [ref=f4e216]:
+              - generic [ref=f4e217]: Years of Experience
+              - combobox [ref=f4e218]:
+                - option "Less than 2 years"
+                - option "2 - 5 years" [selected]
+                - option "5 - 10 years"
+                - option "15+ years (Family Legacy)"
+          - generic [ref=f4e219]:
+            - generic [ref=f4e220]:
+              - generic [ref=f4e221]: Shop / Office Location (Optional / ऐच्छिक)
+              - generic [ref=f4e225]: OPTIONAL
+            - paragraph [ref=f4e226]: Share your Google Maps link or auto-detect your current GPS location so pilgrims can easily navigate to your shop/office.
+            - generic [ref=f4e227]:
+              - generic [ref=f4e228]:
+                - generic [ref=f4e229]: Google Maps Share Link (Optional)
+                - textbox "https://maps.app.goo.gl/... or https://goo.gl/maps/..." [ref=f4e234]
+              - button "📍 Auto-Detect Current GPS Location" [ref=f4e236] [cursor=pointer]
+        - generic [ref=f4e241]:
+          - generic [ref=f4e242]: "Languages Spoken:"
+          - generic [ref=f4e243]:
+            - button "Hindi" [ref=f4e244] [cursor=pointer]
+            - button "English" [ref=f4e247] [cursor=pointer]
+            - button "Bengali" [ref=f4e250] [cursor=pointer]
+            - button "Telugu" [ref=f4e251] [cursor=pointer]
+            - button "Tamil" [ref=f4e252] [cursor=pointer]
+            - button "Sanskrit" [ref=f4e253] [cursor=pointer]
+        - generic [ref=f4e254]:
+          - generic [ref=f4e256]:
+            - generic [ref=f4e260]: Govt Photo ID / Verification Document Upload
+            - generic [ref=f4e261]: "* REQUIRED"
+          - generic [ref=f4e262] [cursor=pointer]:
+            - button "Choose File" [ref=f4e263]
+            - generic [ref=f4e264]:
+              - generic [ref=f4e268]: Click to attach document (Aadhaar / PAN / License)
+              - paragraph [ref=f4e269]: "Supported: .jpg, .png, .pdf (Strictly ≤ 100 KB limit)"
+        - generic [ref=f4e271] [cursor=pointer]:
+          - checkbox "I confirm all details are accurate and pledge to maintain high Vedic integrity and authentic service for all Yatri pilgrims visiting Gaya Ji." [ref=f4e272]
+          - generic [ref=f4e273]: I confirm all details are accurate and pledge to maintain high Vedic integrity and authentic service for all Yatri pilgrims visiting Gaya Ji.
+        - button "Submit Partner Registration Application" [disabled] [ref=f4e274]
+      - generic [ref=f4e278]:
+        - paragraph [ref=f4e279]:
+          - text: Already a registered Partner?
+          - link "Partner Login" [ref=f4e280] [cursor=pointer]:
+            - /url: /auth/login
+        - paragraph [ref=f4e281]:
+          - text: Looking to book as a Yatri pilgrim?
+          - link "Create Yatri Account →" [ref=f4e282] [cursor=pointer]:
+            - /url: /auth/register
+  - contentinfo [ref=f4e283]:
+    - generic [ref=f4e284]:
+      - generic [ref=f4e285]:
+        - link "GayaSeva Primary Logo Gaya Seva BODHGAYA • PIND DAAN • PICK & DROP" [ref=f4e286] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f4e287]:
+            - img "GayaSeva Primary Logo" [ref=f4e289]
+            - generic [ref=f4e290]:
+              - generic [ref=f4e291]:
+                - generic [ref=f4e292]: Gaya
+                - generic [ref=f4e293]: Seva
+              - generic [ref=f4e294]: BODHGAYA • PIND DAAN • PICK & DROP
+        - paragraph [ref=f4e295]: GayaSeva is the official 24/7 Teerth Yatri digital platform for Gaya Ji & Bodh Gaya. Connecting pilgrims directly with background-verified Teerth Pandits, station cabs, clean dharamshalas, and 24/7 emergency helplines.
+        - generic [ref=f4e296]:
+          - link "+91 85444 91413" [ref=f4e297] [cursor=pointer]:
+            - /url: tel:+918544491413
+          - link "WhatsApp" [ref=f4e303] [cursor=pointer]:
+            - /url: https://wa.me/918544491413?text=Namaste%20GayaSeva!
+          - link "gayaseva84@gmail.com" [ref=f4e307] [cursor=pointer]:
+            - /url: mailto:gayaseva84@gmail.com
+        - generic [ref=f4e312]:
+          - paragraph [ref=f4e313]:
+            - generic [ref=f4e317]: Chandrachaud Line, Near Vishnupad Temple, Gaya Ji, Bihar - 823001
+          - paragraph [ref=f4e318]: "Secondary Helplines: +91 92968 04705 | +91 73012 32069"
+      - generic [ref=f4e319]:
+        - generic [ref=f4e320]:
+          - heading "Services" [level=3] [ref=f4e321]
+          - list [ref=f4e322]:
+            - listitem [ref=f4e323]:
+              - link "🪔 Pind Daan Pandits" [ref=f4e324] [cursor=pointer]:
+                - /url: /pandit
+            - listitem [ref=f4e325]:
+              - link "🚕 Pick & Drop Cabs" [ref=f4e326] [cursor=pointer]:
+                - /url: /pick-drop
+            - listitem [ref=f4e327]:
+              - link "🏨 Stays & Hotels" [ref=f4e328] [cursor=pointer]:
+                - /url: /stay
+            - listitem [ref=f4e329]:
+              - link "🍱 Satvik Food" [ref=f4e330] [cursor=pointer]:
+                - /url: /food
+            - listitem [ref=f4e331]:
+              - link "🛒 Puja Kits & Tilkut" [ref=f4e332] [cursor=pointer]:
+                - /url: /puja-material
+        - generic [ref=f4e333]:
+          - heading "Gaya Guide" [level=3] [ref=f4e334]
+          - list [ref=f4e335]:
+            - listitem [ref=f4e336]:
+              - link "Vishnupad Temple" [ref=f4e337] [cursor=pointer]:
+                - /url: /gaya-guide/vishnupad
+            - listitem [ref=f4e338]:
+              - link "Falgu River Devghat" [ref=f4e339] [cursor=pointer]:
+                - /url: /gaya-guide/falgu-river
+            - listitem [ref=f4e340]:
+              - link "Bodh Gaya Mahabodhi" [ref=f4e341] [cursor=pointer]:
+                - /url: /gaya-guide/bodh-gaya
+            - listitem [ref=f4e342]:
+              - link "48 Vedis Map Guide" [ref=f4e343] [cursor=pointer]:
+                - /url: /gaya-guide
+            - listitem [ref=f4e344]:
+              - link "🆘 Emergency 108/112" [ref=f4e345] [cursor=pointer]:
+                - /url: /help
+        - generic [ref=f4e346]:
+          - heading "Yatri Portal" [level=3] [ref=f4e347]
+          - list [ref=f4e348]:
+            - listitem [ref=f4e349]:
+              - link "Partner Login" [ref=f4e350] [cursor=pointer]:
+                - /url: /auth/login
+            - listitem [ref=f4e351]:
+              - link "Create Yatri Account" [ref=f4e352] [cursor=pointer]:
+                - /url: /auth/register
+            - listitem [ref=f4e353]:
+              - link "Register Service" [ref=f4e354] [cursor=pointer]:
+                - /url: /provider/register
+              - generic [ref=f4e355]: 0% COMM
+            - listitem [ref=f4e356]:
+              - link "Lost & Found" [ref=f4e357] [cursor=pointer]:
+                - /url: /help/lost-and-found
+            - listitem [ref=f4e358]:
+              - link "AI Yatri Companion" [ref=f4e359] [cursor=pointer]:
+                - /url: /ai
+    - generic [ref=f4e360]:
+      - generic [ref=f4e361]:
+        - generic [ref=f4e362]: INNOVATION & MANAGEMENT NETWORK
+        - heading "This platform, website, brand & startup innovation is managed & powered by Arrangeman" [level=4] [ref=f4e363]
+        - paragraph [ref=f4e364]:
+          - text: Visit
+          - strong [ref=f4e365]: arrangeman.com
+          - text: for multi-city travel, event management, lodging & verified local services.
+      - link "Visit Arrangeman.com →" [ref=f4e366] [cursor=pointer]:
+        - /url: https://arrangeman.com
+    - generic [ref=f4e368]:
+      - paragraph [ref=f4e369]: © 2026 GayaSeva Pilgrim Platform. All rights reserved. Managed by Arrangeman Innovation Group.
+      - paragraph [ref=f4e370]:
+        - generic [ref=f4e371]: Dedicated to Yatri Devotees Worldwide
+    - heading "GayaSeva" [level=3] [ref=f4e375]
+  - link "WhatsApp Enquiry" [ref=f4e376] [cursor=pointer]:
+    - /url: https://wa.me/918544491413?text=Namaste%20GayaSeva!%20I%20want%20to%20enquire%20about%20Pind%20Daan,%20Taxi%20Pick%20%26%20Drop,%20and%20Stays%20in%20Gaya%20Ji.
+  - link "AI Yatri Assistant" [ref=f4e380] [cursor=pointer]:
+    - /url: /ai
+    - generic [ref=f4e383]: AI Yatri Guide

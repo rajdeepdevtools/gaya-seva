@@ -14,13 +14,14 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
         <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center space-y-2">
           <Phone className="w-6 h-6 text-[#F58220] mx-auto" />
-          <h3 className="font-bold text-[#4A2E1A]">Phone Support</h3>
-          <p className="text-gray-600">+91 98765 43210</p>
+          <h3 className="font-bold text-[#4A2E1A]">Phone / WhatsApp Support</h3>
+          <p className="text-gray-700 font-bold">+91 85444 91413</p>
+          <p className="text-gray-500 text-[11px]">+91 92968 04705 • +91 73012 32069</p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center space-y-2">
           <Mail className="w-6 h-6 text-[#1E88E5] mx-auto" />
-          <h3 className="font-bold text-[#4A2E1A]">Email Support</h3>
-          <p className="text-gray-600">support@gayaseva.org</p>
+          <h3 className="font-bold text-[#4A2E1A]">Official Email</h3>
+          <p className="text-gray-700 font-bold">gayaseva84@gmail.com</p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center space-y-2">
           <MapPin className="w-6 h-6 text-emerald-600 mx-auto" />

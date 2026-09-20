@@ -13,7 +13,7 @@ export function StickyActionButtons() {
     <>
       {/* LEFT STICKY BUTTON: WhatsApp Yatri Enquiry */}
       <a
-        href="https://wa.me/919876543200?text=Namaste%20GayaSeva!%20I%20want%20to%20enquire%20about%20Pind%20Daan,%20Taxi%20Pick%20%26%20Drop,%20and%20Stays%20in%20Gaya%20Ji."
+        href="https://wa.me/918544491413?text=Namaste%20GayaSeva!%20I%20want%20to%20enquire%20about%20Pind%20Daan,%20Taxi%20Pick%20%26%20Drop,%20and%20Stays%20in%20Gaya%20Ji."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp Enquiry"
