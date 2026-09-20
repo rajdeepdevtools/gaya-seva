@@ -14,11 +14,13 @@ services:
         value: 5
       - key: RENDER_EXTERNAL_URL
         value: https://gayaseva-backend.onrender.com
+      - key: FRONTEND_URL
+        value: https://gayaseva.com
+      - key: CORS_ORIGIN
+        value: https://gayaseva.com
       - key: DATABASE_URL
         value: postgresql://postgres:KthIu1hwY2Lg5DkL@db.skhvpstqruswldkzksdz.supabase.co:5432/postgres
       - key: NEXT_PUBLIC_SUPABASE_URL
         value: https://skhvpstqruswldkzksdz.supabase.co
       - key: NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
         value: sb_publishable_oiliOrp73qv098OT2J--Gw__OV1pnS7
-      - key: CORS_ORIGIN
-        value: https://gayaseva.com
