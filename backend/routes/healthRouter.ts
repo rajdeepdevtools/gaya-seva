@@ -16,10 +16,15 @@ const handleHealthCheck = async (req: Request, res: Response) => {
 
   const dbStatus = await KeepAliveService.pingDatabase();
 
+  const externalUrl = process.env.RAILWAY_PUBLIC_DOMAIN
+    ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+    : process.env.PUBLIC_URL || process.env.RENDER_EXTERNAL_URL || 'Not Configured (Using Localhost)';
+
   res.status(200).json({
     status: 'HEALTHY',
     service: 'GayaSeva Central Backend',
-    renderKeepAlive: 'ACTIVE',
+    platform: process.env.RAILWAY_PUBLIC_DOMAIN ? 'Railway' : process.env.RENDER_EXTERNAL_URL ? 'Render' : 'Self-Hosted',
+    keepAlive: 'ACTIVE',
     preventSleep: true,
     uptimeSeconds,
     memoryUsageMB,
@@ -28,7 +33,7 @@ const handleHealthCheck = async (req: Request, res: Response) => {
       latencyMs: dbStatus.latencyMs,
     },
     timestamp: new Date().toISOString(),
-    renderExternalUrl: process.env.RENDER_EXTERNAL_URL || 'Not Configured (Using Localhost)',
+    externalUrl,
   });
 };
 

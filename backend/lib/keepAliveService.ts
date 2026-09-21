@@ -43,13 +43,32 @@ export class KeepAliveService {
     }
 
     const intervalMs = (options?.intervalMinutes || 5) * 60 * 1000; // Default 5 minutes
-    const targetUrl = options?.serverUrl || process.env.RENDER_EXTERNAL_URL || `http://localhost:${process.env.PORT || 5000}/health`;
+
+    const getCloudUrl = () => {
+      if (process.env.RAILWAY_PUBLIC_DOMAIN) {
+        const domain = process.env.RAILWAY_PUBLIC_DOMAIN.startsWith('http')
+          ? process.env.RAILWAY_PUBLIC_DOMAIN
+          : `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`;
+        return domain.endsWith('/health') ? domain : `${domain}/health`;
+      }
+      if (process.env.PUBLIC_URL) {
+        const url = process.env.PUBLIC_URL;
+        return url.endsWith('/health') ? url : `${url}/health`;
+      }
+      if (process.env.RENDER_EXTERNAL_URL) {
+        const url = process.env.RENDER_EXTERNAL_URL;
+        return url.endsWith('/health') ? url : `${url}/health`;
+      }
+      return `http://localhost:${process.env.PORT || 5000}/health`;
+    };
+
+    const targetUrl = options?.serverUrl || getCloudUrl();
 
     if (options?.dbUrl || process.env.DATABASE_URL) {
       this.initDbPool(options?.dbUrl || process.env.DATABASE_URL);
     }
 
-    console.log(`[KeepAlive] Render anti-inactivity service started.`);
+    console.log(`[KeepAlive] Anti-inactivity health ping service started.`);
     console.log(`[KeepAlive] Self-ping target: ${targetUrl}`);
     console.log(`[KeepAlive] Ping Interval: Every ${options?.intervalMinutes || 5} minutes.`);
 

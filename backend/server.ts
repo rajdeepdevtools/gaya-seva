@@ -47,10 +47,9 @@ const server = app.listen(PORT, () => {
   console.log(`🏥 Health Check Endpoints: http://localhost:${PORT}/health`);
   console.log(`=======================================================`);
 
-  // Start Render Anti-Inactivity Keep-Alive Auto Ping (Every 5 minutes)
+  // Start Anti-Inactivity Keep-Alive Auto Ping (Every 5 minutes)
   const intervalMinutes = Number(process.env.KEEP_ALIVE_INTERVAL_MINUTES) || 5;
   KeepAliveService.startAutoPing({
-    serverUrl: process.env.RENDER_EXTERNAL_URL ? `${process.env.RENDER_EXTERNAL_URL}/health` : `http://localhost:${PORT}/health`,
     intervalMinutes,
     dbUrl: process.env.DATABASE_URL,
   });
